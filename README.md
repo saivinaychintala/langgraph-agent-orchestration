@@ -44,6 +44,7 @@ This project showcases a supervisor-worker pattern for AI agent orchestration, w
 | **Orchestration** | LangGraph, LangChain |
 | **LLMs** | OpenAI, Anthropic, Google Gemini, Ollama |
 | **Backend** | Node.js, Express, TypeScript |
+| **Frontend** | Next.js 16, React 19, Tailwind CSS, Zustand |
 | **Database** | MongoDB |
 | **Tools** | Zod for validation |
 | **DevOps** | Docker, Docker Compose |
@@ -67,10 +68,15 @@ cd langgraph-agent-orchestration
 cd backend
 npm install
 
-# Create .env file
-cp ../.env.example .env
+# Install frontend dependencies
+cd ../frontend
+npm install
 
-# Edit .env with your configuration
+# Create .env file
+cd ..
+cp .env.example backend/.env
+
+# Edit backend/.env with your configuration
 ```
 
 ### Running with Ollama (Local LLMs)
@@ -100,9 +106,19 @@ cd backend
 npm run dev
 ```
 
-4. **Test the API**:
+The backend will run on `http://localhost:3001`.
+
+4. **Start the frontend** (optional):
 ```bash
-curl -X POST http://localhost:3000/api/run \
+cd frontend
+npm run dev
+```
+
+The UI will be available at `http://localhost:3002`.
+
+5. **Test the API** (or use the web UI):
+```bash
+curl -X POST http://localhost:3001/api/run \
   -H "Content-Type: application/json" \
   -d '{
     "query": "Research AI agents and analyze the trends",
@@ -331,6 +347,32 @@ npm run type-check
 # Lint
 npm run lint
 ```
+
+## Frontend
+
+The project includes a modern web UI built with:
+- **Next.js 16** + **React 19** (App Router)
+- **Tailwind CSS** with ABL platform design system
+- **Zustand** for state management
+- **Dark theme** with violet accents
+
+### Features
+- Interactive query form with provider selection
+- Real-time agent execution status
+- Animated workflow results display
+- Error handling and loading states
+- Mobile responsive design
+
+### Running the Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Visit `http://localhost:3002` to use the web interface.
+
+For more details, see [frontend/README.md](frontend/README.md).
 
 ## Alignment with Professional Experience
 

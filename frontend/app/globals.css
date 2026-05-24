@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================================================================
+   DESIGN TOKENS - From ABL Platform
+   Dark theme with cool gray neutrals (220 hue)
+   ============================================================================= */
+
+@layer base {
+  :root {
+    /* Background colors — cool neutral grays */
+    --background: 220 3% 4%;
+    --background-subtle: 220 3% 7%;
+    --background-muted: 220 3% 10%;
+    --background-elevated: 220 3% 12.5%;
+
+    /* Foreground colors */
+    --foreground: 220 1% 98%;
+    --foreground-muted: 220 2% 64%;
+    --foreground-subtle: 220 2% 45%;
+
+    /* Border colors */
+    --border: 220 4% 18%;
+    --border-muted: 220 2% 14%;
+    --border-focus: 217 91% 60%;
+
+    /* Accent colors — Monochrome */
+    --accent: 220 5% 93%;
+    --accent-foreground: 220 5% 5%;
+    --accent-muted: 220 5% 80%;
+    --accent-subtle: 220 3% 15%;
+
+    /* Success - Green */
+    --success: 142.1 76.2% 36.3%;
+    --success-foreground: 0 0% 100%;
+    --success-muted: 142.1 76.2% 40%;
+    --success-subtle: 142.1 40% 15%;
+
+    /* Warning - Amber */
+    --warning: 40 93.4% 47.5%;
+    --warning-foreground: 0 0% 9%;
+
+    /* Error - Red */
+    --error: 0 72.2% 50.6%;
+    --error-foreground: 0 0% 100%;
+    --error-muted: 0 72.2% 40%;
+    --error-subtle: 0 40% 15%;
+
+    /* Purple - For AI/LLM */
+    --purple: 262.1 83.3% 57.8%;
+    --purple-foreground: 0 0% 100%;
+    --purple-muted: 262.1 83.3% 40%;
+    --purple-subtle: 262.1 40% 15%;
+
+    /* Animation timing */
+    --duration-fast: 150ms;
+    --duration-normal: 200ms;
+    --duration-slow: 300ms;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Focus ring for accessibility */
+  :focus-visible {
+    outline: 2px solid hsl(var(--border-focus));
+    outline-offset: 2px;
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+/* =============================================================================
+   CUSTOM SCROLLBAR
+   ============================================================================= */
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--foreground-muted) / 0.2);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--foreground-muted) / 0.4);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--foreground-muted) / 0.2) transparent;
+}
+
+/* =============================================================================
+   UTILITY CLASSES
+   ============================================================================= */
+
+@layer utilities {
+  .text-muted {
+    color: hsl(var(--foreground-muted));
+  }
+  
+  .text-subtle {
+    color: hsl(var(--foreground-subtle));
+  }
+
+  .border-default {
+    border-color: hsl(var(--border));
+  }
+
+  .transition-default {
+    transition-property: color, background-color, border-color, box-shadow, transform, opacity;
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    transition-duration: var(--duration-normal);
+  }
+}

@@ -9,9 +9,12 @@ import { connectDatabase } from './config/database.js';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3002', 'http://localhost:3000'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Health check endpoint
@@ -50,6 +53,7 @@ app.post('/api/run', async (req: Request, res: Response) => {
         finalAnswer: result.finalAnswer,
         researchData: result.researchData,
         analysisResult: result.analysisResult,
+        messages: result.messages,
         messageCount: result.messages.length,
       },
     });
