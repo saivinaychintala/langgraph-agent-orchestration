@@ -28,8 +28,8 @@ app.post('/api/run', async (req: Request, res: Response) => {
       return res.status(400).json({ error: 'Query is required' });
     }
 
-    if (!['openai', 'anthropic', 'ollama'].includes(provider)) {
-      return res.status(400).json({ error: 'Invalid provider. Must be openai, anthropic, or ollama' });
+    if (!['openai', 'anthropic', 'ollama', 'gemini'].includes(provider)) {
+      return res.status(400).json({ error: 'Invalid provider. Must be openai, anthropic, ollama, or gemini' });
     }
 
     const threadId = uuidv4();
@@ -84,6 +84,12 @@ app.get('/api/providers', (req: Request, res: Response) => {
         models: ['claude-3-sonnet-20240229', 'claude-3-opus-20240229'],
         requiresApiKey: true,
       },
+      {
+        id: 'gemini',
+        name: 'Google Gemini',
+        models: ['gemini-2.0-flash-exp', 'gemini-1.5-flash', 'gemini-1.5-pro'],
+        requiresApiKey: true,
+      },
     ],
   });
 });
@@ -100,8 +106,8 @@ async function startServer() {
       console.log(`${'='.repeat(60)}`);
       console.log(`📡 Server running on http://localhost:${PORT}`);
       console.log(`🔧 Environment: ${process.env.NODE_ENV || 'development'}`);
-      console.log(`🤖 Default Provider: ${process.env.LLM_PROVIDER || 'ollama'}`);
-      console.log(`📚 Default Model: ${process.env.LLM_MODEL || 'llama3'}`);
+      console.log(`🤖 Default Provider: ${process.env.LLM_PROVIDER || 'gemini'}`);
+      console.log(`📚 Default Model: ${process.env.LLM_MODEL || 'gemini-2.5-pro'}`);
       console.log(`${'='.repeat(60)}\n`);
       console.log('Available endpoints:');
       console.log('  GET  /health           - Health check');

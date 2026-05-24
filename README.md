@@ -1,6 +1,6 @@
 # LangGraph Agent Orchestration System
 
-A demonstration of AI agent orchestration using LangGraph with support for multiple LLM providers (OpenAI, Anthropic, and Ollama for local models).
+A demonstration of AI agent orchestration using LangGraph with support for multiple LLM providers (OpenAI, Anthropic, Google Gemini, and Ollama for local models).
 
 ## Overview
 
@@ -29,6 +29,7 @@ This project showcases a supervisor-worker pattern for AI agent orchestration, w
 - **Multiple LLM Providers**: 
   - OpenAI (GPT-4, GPT-3.5)
   - Anthropic (Claude 3)
+  - Google Gemini (gemini-2.5-flash, gemini-2.5-pro)
   - Ollama (Local models: llama2, mistral, llama3, etc.)
 - **Tool Calling**: Web search, calculator, data analyzer
 - **State Persistence**: MongoDB-backed checkpointing
@@ -41,7 +42,7 @@ This project showcases a supervisor-worker pattern for AI agent orchestration, w
 | Category | Technology |
 |----------|------------|
 | **Orchestration** | LangGraph, LangChain |
-| **LLMs** | OpenAI, Anthropic, Ollama |
+| **LLMs** | OpenAI, Anthropic, Google Gemini, Ollama |
 | **Backend** | Node.js, Express, TypeScript |
 | **Database** | MongoDB |
 | **Tools** | Zod for validation |
@@ -257,6 +258,7 @@ LLM_MODEL=llama3
 # API Keys (optional for Ollama)
 OPENAI_API_KEY=your_key
 ANTHROPIC_API_KEY=your_key
+GOOGLE_API_KEY=your_gemini_key
 
 # Ollama Configuration
 OLLAMA_BASE_URL=http://localhost:11434
@@ -296,6 +298,15 @@ curl -X POST http://localhost:3000/api/run \
 curl -X POST http://localhost:3000/api/run \
   -H "Content-Type: application/json" \
   -d '{"query": "...", "provider": "anthropic", "model": "claude-3-sonnet-20240229"}'
+```
+
+### Google Gemini
+
+```bash
+# Set GOOGLE_API_KEY in .env
+curl -X POST http://localhost:3000/api/run \
+  -H "Content-Type: application/json" \
+  -d '{"query": "...", "provider": "gemini", "model": "gemini-2.5-flash"}'
 ```
 
 ## Development

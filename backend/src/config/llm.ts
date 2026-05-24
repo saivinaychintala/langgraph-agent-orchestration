@@ -1,9 +1,10 @@
 import { ChatOpenAI } from '@langchain/openai';
 import { ChatAnthropic } from '@langchain/anthropic';
 import { ChatOllama } from '@langchain/community/chat_models/ollama';
+import { ChatGoogleGenerativeAI } from '@langchain/google-genai';
 import { BaseChatModel } from '@langchain/core/language_models/chat_models';
 
-export type LLMProvider = 'openai' | 'anthropic' | 'ollama';
+export type LLMProvider = 'openai' | 'anthropic' | 'ollama' | 'gemini';
 
 export interface LLMConfig {
   provider: LLMProvider;
@@ -36,6 +37,13 @@ export function getLLM(config: LLMConfig): BaseChatModel {
         temperature,
       });
 
+    case 'gemini':
+      return new ChatGoogleGenerativeAI({
+        model: model || 'gemini-2.5-pro',
+        temperature,
+        apiKey: process.env.GOOGLE_API_KEY,
+      });
+
     default:
       throw new Error(`Unsupported LLM provider: ${provider}`);
   }
@@ -46,5 +54,5 @@ export function getDefaultProvider(): LLMProvider {
 }
 
 export function getDefaultModel(): string {
-  return process.env.LLM_MODEL || 'llama3';
+  return process.env.LLM_MODEL || 'gemini-2.5-pro';
 }
