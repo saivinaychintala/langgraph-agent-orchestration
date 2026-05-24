@@ -1,6 +1,6 @@
 # LangGraph Agent Orchestration - Frontend
 
-Next.js + React frontend for the LangGraph Agent Orchestration System, styled with ABL platform design system.
+Next.js + React frontend for the LangGraph Agent Orchestration System with a modern dark theme.
 
 ## Tech Stack
 
@@ -13,7 +13,7 @@ Next.js + React frontend for the LangGraph Agent Orchestration System, styled wi
 
 ## Design System
 
-This UI uses the **exact design tokens from the ABL platform**:
+This UI uses a custom design system featuring:
 - Dark theme with cool gray neutrals (HSL 220)
 - Violet accents for AI/LLM features
 - Semantic color system with alpha modifiers
@@ -57,7 +57,7 @@ frontend/
 ├── app/
 │   ├── layout.tsx          # Root layout with Inter font
 │   ├── page.tsx            # Main page
-│   └── globals.css         # Design tokens from ABL
+│   └── globals.css         # Design tokens and styling
 ├── components/
 │   ├── query-form.tsx      # Main query input form
 │   ├── provider-selector.tsx  # LLM provider dropdown
@@ -68,7 +68,7 @@ frontend/
 │   └── utils.ts            # cn() utility
 ├── types/
 │   └── workflow.ts         # TypeScript interfaces
-└── tailwind.config.ts      # Tailwind with ABL tokens
+└── tailwind.config.ts      # Tailwind configuration
 ```
 
 ## Features
@@ -89,7 +89,7 @@ The frontend connects to the backend API at `http://localhost:3001`:
 
 ## Design Patterns
 
-### ABL-Style Component Pattern
+### Component Pattern
 
 ```tsx
 'use client'
@@ -111,7 +111,7 @@ export function MyComponent() {
 ### HSL Colors with Alpha
 
 ```tsx
-// ✅ Correct (ABL pattern)
+// ✅ Correct pattern
 <div className="bg-background-muted border border-default" />
 <div className="bg-purple/10 text-purple" /> {/* Alpha modifier */}
 

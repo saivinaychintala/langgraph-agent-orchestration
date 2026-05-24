@@ -23,6 +23,22 @@ This project showcases a supervisor-worker pattern for AI agent orchestration, w
 └───────────────────┘        └───────────────────┘
 ```
 
+## Screenshots
+
+### Web Interface
+
+**Query Input with Provider Selection**
+
+![UI Query Input](docs/screenshots/ui-query-input.png)
+
+**Real-time Workflow Execution with Agent Messages**
+
+![UI Workflow Messages](docs/screenshots/ui-workflow-messages.png)
+
+**Final Answer Display**
+
+![UI Final Answer](docs/screenshots/ui-final-answer.png)
+
 ## Features
 
 - **Multi-Agent Orchestration**: Supervisor-worker delegation pattern
@@ -352,7 +368,7 @@ npm run lint
 
 The project includes a modern web UI built with:
 - **Next.js 16** + **React 19** (App Router)
-- **Tailwind CSS** with ABL platform design system
+- **Tailwind CSS** with custom design system
 - **Zustand** for state management
 - **Dark theme** with violet accents
 
